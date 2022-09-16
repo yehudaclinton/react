@@ -1,11 +1,10 @@
-
 import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
 
 let modal = document.getElementById("myModal");
-let span = document.getElementsById("close");
+//let span = document.getElementsById("close");
 let [names, setName] = useState(null);
 
 useEffect(() => {
@@ -26,37 +25,28 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-span.onclick = function() {
-  modal.style.display = "none";
-}
 
   return (
     <div className="App">
-<header className="App-header">
-
 <h2>MEET OUR FEATURED INVESTORS</h2>
 <div class="row">
   {}{names && names.map(name => (
   <div class="column">
     <div class="card" onClick={() => handleClick(name.firstname, name.lastname, name.company, name.speaker_head_shot_to_display, name.bio)}>
-      <img src={name.speaker_head_shot_to_display} width="100" height="100" />
-      <p><b>{name.firstname} {name.lastname}</b></p>
+      <img src={name.speaker_head_shot_to_display} width="100%" height="100%" />
+      <h3>{name.firstname} {name.lastname}</h3>
     </div>
   </div>
   ))}
 </div>
-</header>
 <div id="myModal" class="modal">
   <div class="modal-content">
     <h3 id='name'>name</h3>
     <h3 id='company'>company</h3>
     <img id='image' src='' width="100" height="100" />
     <p id='bio'>bio</p>
-    <span id="close">&times;</span>
   </div>
 </div>
-
-
     </div>
   );
 }
